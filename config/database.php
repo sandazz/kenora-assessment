@@ -38,10 +38,13 @@ return [
             'database' => env('DB_DATABASE', database_path('database.sqlite')),
             'prefix' => '',
             'foreign_key_constraints' => env('DB_FOREIGN_KEYS', true),
-            'busy_timeout' => null,
+            'busy_timeout' => 5000,
             'journal_mode' => null,
             'synchronous' => null,
-            'transaction_mode' => 'DEFERRED',
+            // IMMEDIATE causes the transaction to acquire the write lock before the
+            // first read, which serialises concurrent registrations for the same
+            // workshop on SQLite (lockForUpdate() is a no-op on SQLite).
+            'transaction_mode' => 'IMMEDIATE',
         ],
 
         'mysql' => [
