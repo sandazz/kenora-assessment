@@ -18,8 +18,3 @@ php artisan serve
 - **Manager**: `manager@example.com` / `password`
 - **Staff**: `staff@example.com` / `password`
 
-## Concurrency Demo
-
-```bash
-php scripts/concurrency-demo.php
-```
